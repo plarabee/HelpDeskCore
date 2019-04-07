@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace HelpDeskCore.Models
+{
+    public class TicketsModel
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public bool IsActive { get; set; } = true;
+        public string User { get; set; }
+        public string AssignedTo { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+    }
+}

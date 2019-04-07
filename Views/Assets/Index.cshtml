@@ -1,0 +1,54 @@
+﻿@model IEnumerable<HelpDeskCore.Models.AssetsModel>
+
+@{
+    ViewData["Title"] = "Assets";
+}
+
+<p>
+    <a class="btn btn-success float-right mb-3" asp-action="Create">New Asset</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <input class="form-control-sm index-search-input" type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+        <input type="submit" value="Search" class="btn btn-sm btn-primary" />
+    </div>
+</form>
+
+<table class="table">
+    <thead class="table-styles">
+        <tr>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["AssetNameSortParm"]"><u>Name</u></a>
+            </th>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["SerialParm"]"><u>@Html.DisplayNameFor(model => model.Serial)</u></a>
+            </th>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["ManufacturerSortParm"]"><u>@Html.DisplayNameFor(model => model.Manufacturer)</u></a>
+            </th>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["ModelSortParm"]"><u>@Html.DisplayNameFor(model => model.Model)</u></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="bg-white">
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"><u>@Html.DisplayFor(modelItem => item.AssetName)</u></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

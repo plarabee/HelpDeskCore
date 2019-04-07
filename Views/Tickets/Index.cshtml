@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HelpDeskCore.Models.TicketsModel>
+
+@{
+    ViewData["Title"] = "Tickets";
+}
+
+<p>
+    <a class="btn btn-success float-right mb-3 ml-1" asp-action="Create">New Ticket</a>
+    <a class="btn btn-info float-right mb-3" asp-action="Closed">View Closed Tickets</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-group">
+        <input class="form-control-sm index-search-input" type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+        <input type="submit" value="Search" class="btn btn-sm btn-primary" />
+    </div>
+</form>
+
+<table class="table bg-white">
+    <thead class="table-styles">
+        <tr>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["TitleSortParm"]"><u>@Html.DisplayNameFor(model => model.Title)</u></a>
+            </th>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["UserSortParm"]"><u>User</u></a>
+            </th>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["AssignedToSortParm"]"><u>Assigned To</u></a>
+            </th>
+            <th>
+                <a class="text-white" asp-action="Index" asp-route-sortOrder="@ViewData["CreatedAtSortParam"]"><u>Created At</u></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"><u>@Html.DisplayFor(modelItem => item.Title)</u></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignedTo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,44 @@
+﻿@model HelpDeskCore.Models.AssetsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<hr />
+<h1 class="text-white text-center">@Model.AssetName</h1>
+<hr />
+
+<div class="bg-white p-5">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssetName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssetName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Serial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Serial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+    </dl>
+</div>
+
+<div class="float-right mt-3">
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-info" asp-action="Index">Back to List</a>
+</div>
+

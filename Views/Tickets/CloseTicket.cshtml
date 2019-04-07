@@ -1,0 +1,57 @@
+﻿@model HelpDeskCore.Models.TicketsModel
+
+@{
+    ViewData["Title"] = "Close Ticket";
+}
+
+<hr />
+<h1 class="text-white text-center">Close Ticket?</h1>
+<hr /><br />
+
+<div class="bg-white p-3">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AssignedTo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AssignedTo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+    </dl>
+</div>
+
+<form asp-action="CloseTicket" class="mt-3 float-right">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Close Ticket" class="btn btn-danger" />
+    <a class="btn btn-info" asp-action="Index">Back to List</a>
+</form>
+
